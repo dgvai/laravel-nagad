@@ -1,0 +1,26 @@
+{
+    "name": "dgvai/laravel-nagad",
+    "description": "Nagad Payment Gateway for Laravel (Bangladesh)",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jalal Uddin",
+            "email": "dgvai@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DGvai\\Nagad\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DGvai\\Nagad\\NagadServiceProvider"
+            ]
+        }
+    }
+}
