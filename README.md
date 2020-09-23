@@ -1,12 +1,12 @@
 # Nagad (Bangladesh) payment gateway for Laravel 6.x+
 
-[![Latest Stable Version](https://poser.pugx.org/dgvai/laravel-notification-channel-isms/v/stable)](https://packagist.org/packages/dgvai/laravel-notification-channel-isms)
-[![Total Downloads](https://poser.pugx.org/dgvai/laravel-notification-channel-isms/downloads)](https://packagist.org/packages/dgvai/laravel-notification-channel-isms)
-[![Latest Unstable Version](https://poser.pugx.org/dgvai/laravel-notification-channel-isms/v/unstable)](https://packagist.org/packages/dgvai/laravel-notification-channel-isms)
-[![License](https://poser.pugx.org/dgvai/laravel-notification-channel-isms/license)](https://packagist.org/packages/dgvai/laravel-notification-channel-isms)
-[![Monthly Downloads](https://poser.pugx.org/dgvai/laravel-notification-channel-isms/d/monthly)](https://packagist.org/packages/dgvai/laravel-notification-channel-isms)
-[![Daily Downloads](https://poser.pugx.org/dgvai/laravel-notification-channel-isms/d/daily)](https://packagist.org/packages/dgvai/laravel-notification-channel-isms)
-[![composer.lock](https://poser.pugx.org/dgvai/laravel-notification-channel-isms/composerlock)](https://packagist.org/packages/dgvai/laravel-notification-channel-isms)
+[![Latest Stable Version](https://poser.pugx.org/dgvai/laravel-nagad/v/stable)](https://packagist.org/packages/dgvai/laravel-nagad)
+[![Total Downloads](https://poser.pugx.org/dgvai/laravel-nagad/downloads)](https://packagist.org/packages/dgvai/laravel-nagad)
+[![Latest Unstable Version](https://poser.pugx.org/dgvai/laravel-nagad/v/unstable)](https://packagist.org/packages/dgvai/laravel-nagad)
+[![License](https://poser.pugx.org/dgvai/laravel-nagad/license)](https://packagist.org/packages/dgvai/laravel-nagad)
+[![Monthly Downloads](https://poser.pugx.org/dgvai/laravel-nagad/d/monthly)](https://packagist.org/packages/dgvai/laravel-nagad)
+[![Daily Downloads](https://poser.pugx.org/dgvai/laravel-nagad/d/daily)](https://packagist.org/packages/dgvai/laravel-nagad)
+[![composer.lock](https://poser.pugx.org/dgvai/laravel-nagad/composerlock)](https://packagist.org/packages/dgvai/laravel-nagad)
 
 [Nagad](https://nagad.com.bd) is one of the Financial Services in Bangladesh. This package is built for Nagad Payment Gateway for Laravel 6.x, 7.x and 8.x+ 
 
