@@ -13,7 +13,7 @@
 ## Contents
 
 - [Installation](#installation)
-	- [Setting up your ISMS in configuration](#setting-up-your-configuration)
+	- [Setting up your configuration](#setting-up-your-configuration)
 - [Usage](#usage)
 - [Changelog](#changelog)
 - [License](#license)
