@@ -67,17 +67,12 @@ class NagadGenerator
      */    
     protected function generatePaymentRequest(array $sensitiveData) : array
     {
-        return Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'X-KM-Api-Version' => 'v-0.2.0',
-            'X-KM-IP-V4' => NagadHelper::getClientIp(),
-            'X-KM-Client-Type' => 'PC_WEB'
-        ])->post($this->BASE_URL.config('nagad.endpoints.checkout-init').'/'.$this->MERCHANT_ID.'/'.$this->ORDER_ID, [
+        return NagadHelper::HttpPostMethod($this->BASE_URL.config('nagad.endpoints.checkout-init').'/'.$this->MERCHANT_ID.'/'.$this->ORDER_ID, [
             'accountNumber' => config('nagad.merchant.phone'),
             'dateTime' => $this->DATETIME,
             'sensitiveData' => NagadHelper::EncryptDataWithPublicKey(json_encode($sensitiveData)),
             'signature' => NagadHelper::SignatureGenerate(json_encode($sensitiveData)) 
-        ])->json();
+        ]);
     }
     
     /**
@@ -106,17 +101,12 @@ class NagadGenerator
      */
     protected function completePaymentRequest(array $sensitiveOrderData): array
     {
-        return Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'X-KM-Api-Version' => 'v-0.2.0',
-            'X-KM-IP-V4' => NagadHelper::getClientIp(),
-            'X-KM-Client-Type' => 'PC_WEB'
-        ])->post($this->BASE_URL.config('nagad.endpoints.checkout-complete').'/'.$this->PAYMENT_REF_ID, [
+        return NagadHelper::HttpPostMethod($this->BASE_URL.config('nagad.endpoints.checkout-complete').'/'.$this->PAYMENT_REF_ID, [
             'sensitiveData' => NagadHelper::EncryptDataWithPublicKey(json_encode($sensitiveOrderData)),
             'signature' => NagadHelper::SignatureGenerate(json_encode($sensitiveOrderData)),
             'merchantCallbackURL' => $this->CALLBACK_URL,
             'additionalMerchantInfo' => (object)$this->ADDITIONAL
-        ])->json();
+        ]);
     }
     
     /**
@@ -127,6 +117,6 @@ class NagadGenerator
     protected function verifyPayment()
     {
         $payment_ref_id = $this->CALLBACK_RESPONSE->payment_ref_id;
-        $this->VERIFIED_RESPONSE = Http::get($this->BASE_URL.config('nagad.endpoints.payment-verify').'/'.$payment_ref_id)->json();
+        $this->VERIFIED_RESPONSE = NagadHelper::HttpGetMethod($this->BASE_URL.config('nagad.endpoints.payment-verify').'/'.$payment_ref_id);
     }
 }

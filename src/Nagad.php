@@ -40,6 +40,16 @@ class Nagad extends NagadGenerator
     }
     
     /**
+     * getCallbackUrl
+     *
+     * @return void
+     */
+    public function getCallbackUrl()
+    {
+        return $this->CALLBACK_URL;
+    }
+    
+    /**
      * setOrderID
      *
      * @param  mixed $id

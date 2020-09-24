@@ -72,11 +72,64 @@ class NagadHelper
         return $ipaddress;
     }
 
+    /**
+     * Decrypt with Private KEY 
+     * */
     public static function DecryptDataWithPrivateKey($crypttext)
     {
         $merchantPrivateKey = config('nagad.merchant.key.private');
         $private_key = "-----BEGIN RSA PRIVATE KEY-----\n" . $merchantPrivateKey . "\n-----END RSA PRIVATE KEY-----";
         openssl_private_decrypt(base64_decode($crypttext), $plain_text, $private_key);
         return $plain_text;
+    }
+    
+    /**
+     * Custom POST Method 
+     */
+
+    public static function HttpPostMethod($PostURL, $PostData)
+    {
+        $url = curl_init($PostURL);
+        $posttoken = json_encode($PostData);
+        $header = array(
+            'Content-Type:application/json',
+            'X-KM-Api-Version:v-0.2.0',
+            'X-KM-IP-V4:' . self::getClientIp(),
+            'X-KM-Client-Type:PC_WEB'
+        );
+        
+        curl_setopt($url, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($url, CURLOPT_POSTFIELDS, $posttoken);
+        curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($url, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($url, CURLOPT_SSL_VERIFYPEER, 0);
+        
+        $resultdata = curl_exec($url);
+        $ResultArray = json_decode($resultdata, true);
+        curl_close($url);
+        return $ResultArray;
+    }
+    
+    /**
+     * Custom GET Method
+     */
+     
+    public static function HttpGetMethod($url)
+    {
+        $ch = curl_init();
+        $timeout = 10;
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/0 (Windows; U; Windows NT 0; zh-CN; rv:3)");
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $file_contents = curl_exec($ch);
+        echo curl_error($ch);
+        curl_close($ch);
+        return json_decode($file_contents, true);
     }
 }
